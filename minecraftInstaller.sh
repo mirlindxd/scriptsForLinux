@@ -4,9 +4,9 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 echo "installing ufw for opening ports for the minecraft server and other needed tools..."
-apt install ufw wget -y
-ufw allow 25565
-apt update && apt upgrade -y
+sudo apt install ufw wget -y
+sudo ufw allow 25565
+sudo apt update && sudo apt upgrade -y
 echo done installed dependencies
 cd /home/$username
 mkdir minecraft
