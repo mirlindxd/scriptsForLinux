@@ -194,15 +194,8 @@ mkdir /var/www/moodledata
 chown www-data /var/www/moodledata -R
 chmod 0770 /var/www/moodledata -R
 echo "Installation finished. \nNow you've to setup the mysql database"
-echo "Enter everything you find in the mysqlInstallation.txt file, this script will create it upon this is finished."
 echo "Also go to the site: 127.0.0.1/moodle to setup the web installer."
 echo "Created and maintained by Mirlind Dalipi"
 sleep 1
-touch mysqlInstallation.txt
-echo "mysql -u root -p" > mysqlInstallation.txt
-echo "CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" >> mysqlInstallation.txt
-echo "CREATE USER 'moodle'@'localhost' IDENTIFIED WITH mysql_native_password BY 'moodle';" >>> mysqlInstallation.txt
-echo "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO moodle@localhost;
-quit;" >>>> mysqlInstallation.txt
 rm autoInstallationMoodle.sh
 exit 1
