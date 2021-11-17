@@ -157,11 +157,9 @@ while true; do
     esac
 done
 
-if [ "$OS" = "Ubuntu" ]; then
 echo "This installer will download all of the required packages for the Moodle Installer. It will use some of space. This might take awhile to download if you do not have a good internet connection."
 echo ""
 read -n 1 -s -p "Press any key to continue..."
-	if [ "$VER" = "20.04" ]; then
 	echo ""
 	echo "habe hunger"
     sleep 1
