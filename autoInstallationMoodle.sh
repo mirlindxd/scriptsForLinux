@@ -182,8 +182,8 @@ echo "Creating temp folders and downloading moodle..."
 sleep 1
 mkdir /home/temp
 cd /home/temp
-wget https://download.moodle.org/stable38/moodle-latest-38.tgz
-tar -zxvf moodle-lastest-38.tgz
+wget https://download.moodle.org/stable311/moodle-latest-311.tgz
+tar -zxvf moodle-lastest-311.tgz
 cp moodle /var/www/html/ -R
 chown www-data.www-data /var/www/html/moodle -R
 chmod 0755 /var/www/html/moodle -R
