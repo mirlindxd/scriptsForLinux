@@ -191,8 +191,7 @@ sleep 1
 mkdir /var/www/moodledata
 chown www-data /var/www/moodledata -R
 chmod 0770 /var/www/moodledata -R
-clear
-echo "Installation finished. \nNow you've to setup the mysql database"
+echo "Installation finished. Now you've to setup the mysql database"
 echo "Also go to the site: 127.0.0.1/moodle to setup the web installer."
 echo "Created and maintained by Mirlind Dalipi"
 sleep 1
