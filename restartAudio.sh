@@ -1,35 +1,44 @@
 #!/bin/bash
+# Contact me on Discord if you need help with the script or have ideas to improve it: Pure™#0087
+# Notice: This script only works for pipewire and wireplumber!
+# Only works on systemd systems!
 
-if [ "$EUID" -ne 1000 ]
-  then echo "Please run as a user, you'll be prompted if required."
+if [[ `systemctl` =~ -\.mount ]] # check if systemd is being used and exit if not
+  then echo "system runs systemd" 
   exit
 fi
-systemctl --user restart pipewire-pulse pipewire wireplumber
 
-read -p "Do you use bluetooth headphones and want to restart the bluetooth service too? (requires root)? (yes/no) " yn
+if [ "$EUID" -ne 1000 ] # for now only the main user
+  then echo "Please run as an user, you'll be prompted if required."
+  exit
+fi
+echo Restarting pipewire services...
+sleep 1 
+systemctl --user restart pipewire-pulse pipewire wireplumber # Restarting all pipewire's required services to mitigate any issues appearing later on
+
+read -p "Do you use bluetooth headphones and want to restart the bluetooth service too? (requires root)? (y/n) " yn # Read user input
 
 case $yn in 
-	yes ) echo Restarting bluetooth service...;;
-	no ) echo exiting...;
+	[yY] ) echo Restarting bluetooth service...;;
+	[nN] ) echo exiting...; # if no, it just exites and does not goto the easyeffects question... WIP
 		exit;;
 	* ) echo invalid response;
 		exit 1;;
 esac
 sudo systemctl restart bluetooth 
 
-read -p "Do you use EasyEffects? (yes/no) " yn
+read -p "Do you use EasyEffects? (y/n) " yn
 
 case $yn in 
-	yes ) echo Restarting easyeffects...;;
-	no ) echo exiting...;
+	[yY] ) echo Restarting easyeffects...;;
+	[yN] ) echo exiting...;
 		exit;;
 	* ) echo invalid response;
 		exit 1;;
 esac
 
-killall easyeffects
-easyeffects & 2> /dev/null
-disown
+killall easyeffects # Kills easyeffects application since you cannot open easyeffects after restarting pipewire 
 
-echo Done with everything, have a nice day!
+echo Please open EasyEffects from your application launcher, have a nice day!
+
 
