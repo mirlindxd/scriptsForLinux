@@ -17,7 +17,7 @@ echo Restarting pipewire services...
 sleep 1 
 systemctl --user restart pipewire-pulse pipewire wireplumber # Restarting all pipewire's required services to mitigate any issues appearing later on
 sleep 1
-echo "illing easyeffects as it won't work anymore without restarting it..."
+echo "Killing easyeffects as it won't work anymore without restarting it..."
 killall easyeffects
 
 read -p "Do you use bluetooth headphones and want to restart the bluetooth service too? (requires root)? (y/n) " yn # Read user input
